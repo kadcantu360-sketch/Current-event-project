@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Syrian War Game</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #f0f0f0;
+            margin: 25px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 75px;
+        }
+
+        p {
+            color: #666;
+            font-size: 25px;
+        }
+
+        .button {
+            padding: 10px 20px;
+            margin: 20px;
+            font-size: 30px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #eeeeee;
+        }
+        .button:hover {
+            background-color: #4ab34f;
+        }
+        .button:active {
+            background-color: #3e8e41;
+        }
+        .buttondiv {
+            text-align: center;
+        }
+
+        .grandparentDiv {
+            display: flex;
+            width: 100%;
+            justify-content: center;
+        }
+        .parentDiv {
+            display: flex;
+            flex-direction: column;
+
+            border-color: #56a033;
+            border-width: 10px;
+            border-style: double;
+            border-radius: 20px;
+
+            width: 95%;
+            min-width: 0;
+            max-width: 50vh;
+            align-items: center;
+            margin: auto;
+
+        }
+        .imageDiv {
+            width:100%;
+            border-top-left-radius: 100px;
+            border-top-left-radius: 10px;
+        }
+        .nupid {
+            width: 100%;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+        }
+        .textDiv {
+            background-color: #000000;
+            padding: 10px;
+            border-bottom-left-radius: 10px;
+            border-bottom-right-radius: 10px;
+            width: 93.5%;
+        }
+        .text {
+            color: #ffffff;
+        }
+        
+        .buttons {
+            display: flex;
+            justify-content: space-between;
+            max-width: 100%;
+        }
+        .otherButton {
+            padding: 4px 8px;
+            background-color: #4CAF50;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            color: #eeeeee;
+            font-size: 20px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Syrian War</h1>
+
+    <div id="buttonDiv" class="buttondiv">
+        <a href="mainPage.html" class="button">play!</a>
+    </div>
+
+
+    <br>
+
+
+    <div class="grandparentDiv"></div>
+        <div class="parentDiv" id="parentDiv">
+
+            <div class="imageDiv">
+
+                <img src="O-sad.jpg" alt="obamna giving you comms" id="obomnaImage" class="nupid">
+          
+            </div>
+
+            <div class="textDiv">
+
+                <p class="text" id="saying">You are playing as the United States. Choose wisely to not let Syria go communist!</p>
+            
+                <div class="buttons">
+                    <button id="back" class="otherButton">&lt;- Back</button>
+                    <button id="forward" class="otherButton">forward -&gt;</button>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+
+    <script src="intro.js"></script>
+
+</body>
+
+</html>
