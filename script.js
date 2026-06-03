@@ -15,7 +15,7 @@ const button2 = document.getElementById('button2');
 const questions = [
     {
         question: 'Our first mission for you today, Operation Timber Sycamore. Should we arm and train rebel groups?',
-        options: ["Yes CIA should arm and train vetted rebel groups,", "No high possibility of defections or misuse of training/information,"],
+        options: ["Yes CIA should arm and train vetted rebel groups,", "No high possibility of defections or misuse of training / information,"],
     },
     {
         question: "Syria is requesting funds, will you donate?",
