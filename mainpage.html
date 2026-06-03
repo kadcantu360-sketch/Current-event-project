@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Syrian War Game</title>
+    <style>
+        body {
+            font-family: 'Times New Roman', sans-serif;
+            background-color: #f0f0f0;
+            margin: 25px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+            font-size: 75px;
+        }
+
+        p {
+            color: #666;
+            font-size: 25px;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: row;
+            margin-top: 20px;
+            padding: 5px;
+            justify-content: space-around;
+        }
+        .option {
+            background-color: #b0b0b0;
+            border: 1px solid #000;
+            border-radius: 15px;
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            color: #000;
+            font-size: 20px;
+        }
+        .option:hover {
+            background-color: #ccc;
+        }
+        .option:active {
+            background-color: #ddd;
+        }
+        
+        .question {
+            color: #111;
+            font-size: 30px;
+            font-weight: bold;
+            margin-top: 20px;
+            text-align: justify;
+        }
+        
+        .canvas {
+            margin: auto;
+        }
+
+        .break {
+            height: calc(38vh - 30vw);
+        }
+
+    </style>
+</head>
+
+<body>
+    <h1>Syrian War</h1>
+    <!-- <p>You are playing as the United States. Choose wisely to not let Syria go communist!</p>
+    <p>If any group gains too much power, or if you spend all your budget, you lose.</p>
+    <p>Keep you approval high to get more funding!</p>
+    <hr> -->
+
+
+    <p class = "question" id="question">example question</p>
+
+    <div class="options">
+        <p class="option" id="button1">Option 1</p>
+        <p class="option" id="button2">Option 2</p>
+    </div>
+
+    <p class="break"></p>
+
+    <canvas class="canvas" id="canvas" width="300" height="150" style="border:3px double #000000;">
+        Your browser does not support the HTML5 canvas tag.
+    </canvas>
+    <script src="script.js"></script>
+</body>
+
+</html>
