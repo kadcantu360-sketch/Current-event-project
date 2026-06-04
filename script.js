@@ -23,7 +23,7 @@ const questions = [
     },
     {
         question: "how much will you donate?",
-        options: ["$1000", "$5000"],
+        options: ["$1 million", "$5 million"],
     },
     {
         question: "another example",
@@ -37,16 +37,22 @@ const questions = [
 let currentQuestion = 0;
 
 let budget = 130000000; //130 million = 130000000
+let budgetPrev = budget;
 const wordForMoneyScaleList = ["", "thousand", "million", "billion", "trillion", "quadrillion"];
 let wordForMoneyScale = "not loaded yet";
 let budgetFirstDigits = 0;
 
 let syrianRelation = 0;
+let syrianRelationPrev = syrianRelation;
 
 
 let FSAstart = 70;
 let ISISstart = 50;
 let AssarStart = 140;
+
+let FSAbarPrev = FSAstart;
+let ISISbarPrev = ISISstart;
+let AssarBarPrev = AssarStart;
 
 let FSAbar = FSAstart;
 let ISISbar = ISISstart;
@@ -60,13 +66,15 @@ let barMax = 275;
 
 function update() {
 
-    if (budget < 0) {
-        budget = 0;
-    }
+    FSAbarPrev = (FSAbar + FSAbarPrev * 19)/20;
+    ISISbarPrev = (ISISbar + ISISbarPrev * 19)/20;
+    AssarBarPrev = (AssarBar + AssarBarPrev * 19)/20;
+    budgetPrev = (budget + budgetPrev * 19)/20;
+    syrianRelationPrev = Math.ceil((syrianRelation + syrianRelationPrev * 19) / (20 / 100)) / 100;
 
-    wordForMoneyScale = wordForMoneyScaleList[Math.floor(Math.log10(budget) / 3)];
-    budgetFirstDigits = Number((budget / Math.pow(1000, Math.floor(Math.log10(budget) / 3))).toFixed(2));
-    
+    wordForMoneyScale = wordForMoneyScaleList[Math.floor(Math.log10(budgetPrev) / 3)];
+    budgetFirstDigits = Number((budgetPrev / Math.pow(1000, Math.floor(Math.log10(budgetPrev) / 3))).toFixed(2));
+
     showQuestionAndOptions();
 
     checkIfGameOver();
@@ -83,9 +91,11 @@ function render() {
     ctx.fillStyle = '#000000';
     
     ctx.fillText('budget: $' + budgetFirstDigits + ' ' + wordForMoneyScale, 5, 25);
-    ctx.fillText('how is your relation with Syria: ' + syrianRelation, 5, 45);
+    ctx.fillText('how is your relation with Syria: ' + Math.floor(syrianRelationPrev), 5, 45);
 
-    ctx.fillStyle = '#ff0000';
+
+
+    ctx.fillStyle = '#ffa0a0';
 
     ctx.fillRect(10,67,FSAbar ,22);
     ctx.strokeRect(10,67,275,22);
@@ -97,6 +107,22 @@ function render() {
 
     ctx.fillRect(10,117,AssarBar ,22);
     ctx.strokeRect(10,117,275,22);
+
+
+
+    ctx.fillStyle = '#ff0000';
+
+    ctx.fillRect(10,67,FSAbarPrev, 22);
+    ctx.strokeRect(10,67,275,22);
+    
+
+    ctx.fillRect(10,92,ISISbarPrev, 22);
+    ctx.strokeRect(10,92,275,22);
+
+
+    ctx.fillRect(10,117,AssarBarPrev, 22);
+    ctx.strokeRect(10,117,275,22);
+
 
     ctx.fillStyle = '#000000';
     ctx.textBaseline = 'middle';
@@ -162,10 +188,10 @@ function oldManConsequences(optionChosen) {
         }
     } else if (currentQuestion === 2) {
         if (optionChosen === 1) {
-            budget -= 1000; 
+            budget -= 1000000; 
             syrianRelation += 10;
         } else {
-            budget -= 5000;
+            budget -= 5000000;
             syrianRelation += 100;
         }
     }
@@ -193,4 +219,13 @@ button1.addEventListener('click', () => {
 button2.addEventListener('click', () => {
     oldManConsequences(2);
     chooseNewQuestion(2);
+});
+
+document.addEventListener('keydown', (event) => {
+    if (event.key === '=') {
+        budget *= 10;
+    }
+    if (event.key === '-') {
+        budget /= 10;
+    }
 });
