@@ -45,9 +45,15 @@ let syrianRelation = 0;
 
 // let citizenApproval = 0;
 
-let FSAbar = 70;
-let ISISbar = 50;
-let AssarBar = 140;
+let FSAstart = 70;
+let ISISstart = 50;
+let AssarStart = 140;
+
+let FSAbar = FSAstart;
+let ISISbar = ISISstart;
+let AssarBar = AssarStart;
+
+let barMax = 275;
 
 
 
@@ -63,10 +69,10 @@ function update() {
     budgetFirstDigits = Number((budget / Math.pow(1000, Math.floor(Math.log10(budget) / 3))).toFixed(2));
     
     showQuestionAndOptions();
+
+    checkIfGameOver();
     
 }
-
-
 
 
 
@@ -147,10 +153,10 @@ function showQuestionAndOptions() {
 function oldManConsequences(optionChosen) {
     if (currentQuestion === 0) {
         if (optionChosen === 1) {
-            FSAbar += 10;
+            FSAbar += (barMax - FSAstart) / 6;
             syrianRelation += 5;
         } else {
-            AssarBar += 10;
+            AssarBar += (barMax - AssarStart) / 6;
             syrianRelation -= 5;
         }
     } else if (currentQuestion === 1) {
@@ -181,6 +187,8 @@ function chooseNewQuestion(optionChosen) {
     currentQuestion = (currentQuestion + 1) % questions.length;
     // }
 }
+
+function checkIfGameOver() {}
 
 
 
