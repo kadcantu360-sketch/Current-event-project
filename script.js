@@ -43,7 +43,6 @@ let budgetFirstDigits = 0;
 
 let syrianRelation = 0;
 
-// let citizenApproval = 0;
 
 let FSAstart = 70;
 let ISISstart = 50;
@@ -85,7 +84,6 @@ function render() {
     
     ctx.fillText('budget: $' + budgetFirstDigits + ' ' + wordForMoneyScale, 5, 25);
     ctx.fillText('how is your relation with Syria: ' + syrianRelation, 5, 45);
-    // ctx.fillText('How much do your citizens approve you?: ' + citizenApproval, 5, 60);
 
     ctx.fillStyle = '#ff0000';
 
@@ -106,9 +104,6 @@ function render() {
     ctx.fillText("ISIS power meter", 170, 104);
     ctx.fillText(" Bashar al-Assad power meter", 90, 129);
 
-
-    // ctx.stroke(10,10,20,20);
-    // ctx.fill();
 }
 
 
@@ -177,18 +172,14 @@ function oldManConsequences(optionChosen) {
 }
 
 function chooseNewQuestion(optionChosen) {
-    // if (currentQuestion === 1) {
-    //     if (optionChosen === 1) {
-    //         currentQuestion = 2;
-    //     } else {
-    //         currentQuestion = 3;
-    //     }
-    // } else {
     currentQuestion = (currentQuestion + 1) % questions.length;
-    // }
 }
 
-function checkIfGameOver() {}
+function checkIfGameOver() {
+    if (budget <= 0) {
+        window.location.href = "gameOver.html";
+    }
+}
 
 
 

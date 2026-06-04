@@ -22,8 +22,9 @@ const obomnaImages = [
 ];
 let current = 0;
 
-// saying.textContent = obomnaTexts[2];
-// obomnaImage.src = obomnaImages[3];
+
+
+
 
 function loop() {
 
