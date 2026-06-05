@@ -215,7 +215,9 @@ function oldManConsequences(optionChosen) {
         } else {
             ISISbar += 100;
         }
-    }
+    } else {
+        alert("This question doesn't have consequences coded in yet, but it will be added in the future! For now, just click the button to move on to the next question.");
+    }        
 }
 
 function chooseNewQuestion(optionChosen) {
