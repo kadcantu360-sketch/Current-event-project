@@ -26,7 +26,7 @@ const questions = [
         options: ["1", "2"],
     },
     {
-        question: "This just in, a paper to provide Anti-tank Weapons to FSA-affiliated group.",
+        question: "This just in, a paper to provide Anti-tank Weapons to FSA-affiliated group. do we aprove it?",
         options: ["Hey, why not! Improved ability to destroy armored vehicles.", "No! that's dangerous. Anyone? Affiliated?"],
     },
     {
@@ -42,8 +42,8 @@ const questions = [
         options: ["1", "2"],
     },
     {
-        question: "Let's give some Financial Support.",
-        options: ["Money's infinite, Lives are not (yes).", "Nah, that money's gonna get wasted on corruption anyway!"],
+        question: "should we give some financial support?",
+        options: ["Money's infinite, Lives are not, lets do it!.", "Nah, that money's gonna get wasted on corruption anyway!"],
     },
     {
         question: "9example",
@@ -192,6 +192,9 @@ function showQuestionAndOptions() {
 }
 
 function oldManConsequences(optionChosen) {
+
+    budget-= budget / 10;
+
     if (currentQuestion+1 === 1) {
         if (optionChosen === 1) {
             FSAbar += (barMax - FSAstart) / 3;
