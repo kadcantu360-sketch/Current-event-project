@@ -192,27 +192,28 @@ function showQuestionAndOptions() {
 }
 
 function oldManConsequences(optionChosen) {
-    if (currentQuestion === 0) {
+    if (currentQuestion+1 === 1) {
         if (optionChosen === 1) {
-            FSAbar += (barMax - FSAstart) / 6;
+            FSAbar += (barMax - FSAstart) / 3;
             syrianRelation += 5;
         } else {
             AssarBar += (barMax - AssarStart) / 6;
             syrianRelation -= 5;
         }
-    } else if (currentQuestion === 1) {
+    } else if (currentQuestion+1 === 4) {
         if (optionChosen === 1) {
             syrianRelation += 5;
+            FSAbar += (barMax - FSAstart) / 6;
         } else {
-            syrianRelation -= 150;
+            ISISbar += (barMax - ISISstart) / 2;
         }
-    } else if (currentQuestion === 2) {
+    } else if (currentQuestion+1 === 8) {
         if (optionChosen === 1) {
             budget -= 1000000; 
             syrianRelation += 10;
+            FSAbar += (barMax - FSAstart) / 3;
         } else {
-            budget -= 5000000;
-            syrianRelation += 100;
+            ISISbar += 100;
         }
     }
 }
