@@ -18,20 +18,40 @@ const questions = [
         options: ["Yes CIA should arm and train vetted rebel groups,", "No high possibility of defections or misuse of training / information,"],
     },
     {
-        question: "Syria is requesting funds, will you donate?",
-        options: ["yes", "no"],
-    },
-    {
-        question: "how much will you donate?",
-        options: ["$1 million", "$5 million"],
-    },
-    {
-        question: "another example",
+        question: "2example",
         options: ["1", "2"],
     },
     {
-        question: "will you kill assad",
-        options: ["nuke em", "say that you will but dont actually do it"],
+        question: "3example",
+        options: ["1", "2"],
+    },
+    {
+        question: "This just in, a paper to provide Anti-tank Weapons to FSA-affiliated group.",
+        options: ["Hey, why not! Improved ability to destroy armored vehicles.", "No! that's dangerous. Anyone? Affiliated?"],
+    },
+    {
+        question: "5example",
+        options: ["1", "2"],
+    },
+    {
+        question: "6example",
+        options: ["1", "2"],
+    },
+    {
+        question: "7example",
+        options: ["1", "2"],
+    },
+    {
+        question: "Let's give some Financial Support.",
+        options: ["Money's infinite, Lives are not (yes).", "Nah, that money's gonna get wasted on corruption anyway!"],
+    },
+    {
+        question: "9example",
+        options: ["1", "2"],
+    },
+    {
+        question: "This just in, it is now decided the FSA should be the winners of the war. From now on, rather than keeping the powers in balance, push for FSA to win!",
+        options: ["lets do it!", "Now or never!"],
     },
 ];
 let currentQuestion = 0;
