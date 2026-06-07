@@ -228,7 +228,7 @@ function chooseNewQuestion(optionChosen) {
 }
 
 function checkIfGameOver() {
-    if (budget <= 0) {
+    if (budgetPrev <= 0) {
         window.location.href = "gameOver.html";
     }
 }
