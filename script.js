@@ -370,7 +370,7 @@ function chooseNewQuestion(optionChosen) {
 }
 
 function checkIfGameOver() {
-    if (currentQuestion >= 19 || (FSAbar >= barMax && currentQuestion > 7)) {
+    if (currentQuestion >= 19 || (FSAbar+3 >= barMax && currentQuestion > 7)) {
         reasonForGameOver = 0;
     } else if (budgetPrev <= 0) {
         reasonForGameOver = 1;
