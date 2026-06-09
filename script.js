@@ -370,13 +370,13 @@ function chooseNewQuestion(optionChosen) {
 }
 
 function checkIfGameOver() {
-    if (currentQuestion >= 19 || (FSAbar+3 >= barMax && currentQuestion > 7)) {
+    if (currentQuestion >= 19 || (FSAbarPrev+3 >= barMax && currentQuestion > 7)) {
         reasonForGameOver = 0;
     } else if (budgetPrev <= 0) {
         reasonForGameOver = 1;
-    } else if (ISISbar >= barMax || AssarBar >= barMax || FSAbar <= 0) {
+    } else if (ISISbarPrev+3 >= barMax || AssarBarPrev+3 >= barMax || FSAbarPrev-3 <= 0) {
         reasonForGameOver = 2;
-    } else if (FSAbar >= barMax && currentQuestion < 7){
+    } else if (FSAbarPrev+3 >= barMax && currentQuestion < 7){
         reasonForGameOver = 3;
     }
 }
