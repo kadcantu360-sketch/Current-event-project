@@ -29,17 +29,17 @@ const questions = [
         question: "This just in, a paper to provide Anti-tank Weapons to FSA-affiliated group. do we aprove it?",
         options: ["Hey, why not! Improved ability to destroy armored vehicles.", "No! that's dangerous. Anyone? Affiliated?"],
     },
-    {
-        question: "Should we support all factions despite extremism?",
-        options: ["Reject due to terrorism concerns.", "Not our problem."],
-    },
+    // {
+    //     question: "Should we support all factions despite extremism?",
+    //     options: ["Reject due to terrorism concerns.", "Not our problem."],
+    // },
     {
         question: "Should we add Training programs to produce fighters?",
-        options: ["Yes, catch a fish, it'll feed a man for a day, teach him to fish, and he becomes self-sufficient.", "Strategic Impact is limited anyway, let's just reject it."],
+        options: ["Strategic Impact is limited anyway, let's just reject it.", "Yes, catch a fish, it'll feed a man for a day, teach him to fish, and he becomes self-sufficient."],
     },
     {
         question: "Should we give the FSA heavy weapons right now?",
-        options: ["We should wait till later in the war.", "No need to wait, winning is priority."],
+        options: ["We should wait till later in the war.", "Yes, we can't wait, winning is priority."],
     },
     {
         question: "In 2016, the FSA had mostly dissolved, and Hay'at Tahrir Al-Sham, or HTS, is now the main force against the Regime.",
@@ -98,6 +98,9 @@ let syrianRelation = 0;
 let syrianRelationPrev = syrianRelation;
 
 
+let reasonForGameOver = 5;
+
+
 let FSAstart = 70;
 let ISISstart = 50;
 let AssarStart = 140;
@@ -130,6 +133,13 @@ function update() {
     showQuestionAndOptions();
 
     checkIfGameOver();
+
+    if (reasonForGameOver !== 5) {
+        while (document.body.firstChild) {
+            document.body.removeChild(document.body.firstChild);
+        }
+        window.location.href = "gameOver.html";
+    }
     
 }
 
@@ -178,7 +188,7 @@ function render() {
 
     ctx.fillStyle = '#000000';
     ctx.textBaseline = 'middle';
-    if (currentQuestion < 8) {
+    if (currentQuestion < 7) {
         ctx.fillText("FSA power meter", 170, 79);
     } else {
         ctx.fillText("HTS power meter", 170, 79);
@@ -229,43 +239,142 @@ function showQuestionAndOptions() {
 
 function oldManConsequences(optionChosen) {
 
-    budget-= budget / 10;
+    AssarBar += (barMax - AssarStart) / 12;
+    ISISbar += (barMax - ISISstart) / 12;
+    budget-= 1000000;
 
     if (currentQuestion+1 === 1) {
         if (optionChosen === 1) {
-            FSAbar += (barMax - FSAstart) / 3;
+            FSAbar += (barMax - FSAstart) / 6;
+            budget-=50000000;
             syrianRelation += 5;
         } else {
-            AssarBar += (barMax - AssarStart) / 6;
             syrianRelation -= 5;
+        }
+    } else if (currentQuestion+1 === 2) {
+        if (optionChosen === 1) {
+            budget-=10000000;
+            FSAbar -= (barMax - FSAstart) / 6;
+            ISISbar -= (barMax - ISISstart) / 6;
+            AssarBar -= (barMax - AssarStart) / 6;
+        }
+    } else if (currentQuestion+1 === 3) {
+        if (optionChosen === 1) {
+            budget -= 100000000; 
+            syrianRelation += 10;
+            FSAbar += (barMax - FSAstart) / 6;
+            ISISbar -= (barMax - ISISstart) / 6;
+            AssarBar -= (barMax - AssarStart) / 6;
+        } else {
+            ISISbar += (barMax - ISISstart) / 6;
+            AssarBar += (barMax - AssarStart) / 6;
         }
     } else if (currentQuestion+1 === 4) {
         if (optionChosen === 1) {
-            syrianRelation += 5;
+            syrianRelation += 10;
             FSAbar += (barMax - FSAstart) / 6;
-        } else {
-            ISISbar += (barMax - ISISstart) / 2;
+            ISISbar -= (barMax - ISISstart) / 6;
+            AssarBar -= (barMax - AssarStart) / 6;
         }
-    } else if (currentQuestion+1 === 8) {
-        if (optionChosen === 1) {
-            budget -= 1000000; 
+    } else if (currentQuestion+1 === 5) {
+        if (optionChosen === 2) {
+            budget -= 50000000; 
             syrianRelation += 10;
             FSAbar += (barMax - FSAstart) / 3;
-        } else {
-            ISISbar += 100;
         }
-    // } else {
-    //     alert("This question doesn't have consequences coded in yet, but it will be added in the future! For now, just click the button to move on to the next question.");
-    }        
+    } else if (currentQuestion+1 === 6) {
+        if (optionChosen === 2) {
+            budget -= 100000000; 
+            FSAbar+=barMax;
+        }
+    } else if (currentQuestion+1 === 7) { //Should be event rather than question???
+        AssarBar -= (barMax - AssarStart) / 12;
+        ISISbar -= (barMax - ISISstart) / 12;
+        budget+= 1000000;
+    } else if (currentQuestion+1 === 8) {
+        if (optionChosen === 1) {
+            budget -= 100000000; 
+            syrianRelation += 100;
+            FSAbar += (barMax - FSAstart) / 3;
+        }
+    } else if (currentQuestion+1 === 9) {
+        if (optionChosen === 1) {
+            syrianRelation -= 10;
+        } else {
+            syrianRelation -= 10;
+        }
+    } else if (currentQuestion+1 === 10) {
+        if (optionChosen === 1) {
+            budget -= 100000000; 
+            FSAbar += (barMax - FSAstart) / 2;
+        }
+    } else if (currentQuestion+1 === 11) {
+        if (optionChosen === 1) {
+            budget -= 5000000; 
+            syrianRelation += 10;
+            FSAbar += (barMax - FSAstart) / 6;
+        } else {
+            FSAbar -= (barMax - FSAstart) / 3;
+        }
+    } else if (currentQuestion+1 === 12) {
+        if (optionChosen === 1) {
+            budget -= 5000000; 
+            syrianRelation += 10;
+            FSAbar += (barMax - FSAstart) / 6;
+        } else {
+            FSAbar -= (barMax - FSAstart) / 3;
+        }
+    } else if (currentQuestion+1 === 13) { // next event???
+        AssarBar -= (barMax - AssarStart) / 12;
+        ISISbar -= (barMax - ISISstart) / 12;
+        budget+= 1000000;
+    } else if (currentQuestion+1 === 14) {
+        if (optionChosen === 1) {
+            budget -= 5000000; 
+            syrianRelation += 75;
+        } else {
+            syrianRelation -= 100;
+        }
+    } else if (currentQuestion+1 === 15) {
+        if (optionChosen === 1) {
+            budget -= 10000000; 
+            FSAbar += (barMax - FSAstart) / 6;
+        }
+    } else if (currentQuestion+1 === 16) {
+        if (optionChosen === 1) {
+            budget -= 1000000; 
+            FSAbar += (barMax - FSAstart) / 3;
+            AssarBar -= (barMax - AssarStart) / 2;
+        } else {
+            budget -= 1000000; 
+            FSAbar += (barMax - FSAstart) / 3;
+            ISISbar -= (barMax - ISISstart) / 2;
+        }
+    } else if (currentQuestion+1 === 17) {
+        if (optionChosen === 1) {
+            FSAbar -= (barMax - FSAstart);
+            ISISbar -= (barMax - ISISstart);
+            AssarBar -= (barMax - AssarStart);
+        } else {
+            FSAbar += (barMax - FSAstart);
+        }
+    }
 }
 
 function chooseNewQuestion(optionChosen) {
-    currentQuestion = (currentQuestion + 1) % questions.length;
+    currentQuestion++;
 }
 
 function checkIfGameOver() {
-    if (budgetPrev <= 0) {
-        window.location.href = "gameOver.html";
+    if (currentQuestion >= 19 || (FSAbar >= barMax && currentQuestion > 7)) {
+
+        reasonForGameOver = 0;
+    } else if (budgetPrev <= 0) {
+        reasonForGameOver = 1;
+    } else if (ISISbar >= barMax || AssarBar >= barMax || FSAbar <= 0) {
+        reasonForGameOver = 2;
+    } else if (FSAbar >= barMax && currentQuestion < 7){
+        reasonForGameOver = 3;
     }
 }
 
