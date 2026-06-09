@@ -18,40 +18,72 @@ const questions = [
         options: ["Yes CIA should arm and train vetted rebel groups,", "No high possibility of defections or misuse of training / information,"],
     },
     {
-        question: "2example",
-        options: ["1", "2"],
+        question: "Hey, I heard they requested direct military intervention back in Syria.",
+        options: ["Approve direct military intervention.", "Reject Military Intervention"],
     },
     {
-        question: "3example",
-        options: ["1", "2"],
+        question: "Expanded aid after Russian intervention.",
+        options: ["Checks and Balances (Support in response).", "Avoid escalation (Do not aid)."],
     },
     {
         question: "This just in, a paper to provide Anti-tank Weapons to FSA-affiliated group. do we aprove it?",
         options: ["Hey, why not! Improved ability to destroy armored vehicles.", "No! that's dangerous. Anyone? Affiliated?"],
     },
     {
-        question: "5example",
-        options: ["1", "2"],
+        question: "Should we support all factions despite extremism?",
+        options: ["Reject due to terrorism concerns.", "Not our problem."],
     },
     {
-        question: "6example",
-        options: ["1", "2"],
+        question: "Should we add Training programs to produce fighters?",
+        options: ["Yes, catch a fish, it'll feed a man for a day, teach him to fish, and he becomes self-sufficient.", "Strategic Impact is limited anyway, let's just reject it."],
     },
     {
-        question: "7example",
-        options: ["1", "2"],
+        question: "Should we give the FSA heavy weapons right now?",
+        options: ["We should wait till later in the war.", "No need to wait, winning is priority."],
     },
     {
-        question: "should we give some financial support?",
+        question: "In 2016, the FSA had mostly dissolved, and Hay'at Tahrir Al-Sham, or HTS, is now the main force against the Regime.",
+        options: ["Continue", "Continue"],
+    },
+    {
+        question: "should we give some financial support to the HTS?",
         options: ["Money's infinite, Lives are not, lets do it!.", "Nah, that money's gonna get wasted on corruption anyway!"],
     },
     {
-        question: "9example",
-        options: ["1", "2"],
+        question: "We've received a form for a no-fly zone.",
+        options: ["Assad ain't bothering nobody. Let's leave him be.", "I mean its just a no-fly zone, why not?"],
     },
     {
-        question: "This just in, it is now decided the FSA should be the winners of the war. From now on, rather than keeping the powers in balance, push for FSA to win!",
-        options: ["lets do it!", "Now or never!"],
+        question: "This just in, Chemical Attacks (2013) requested Airstrike retaliation.",
+        options: ["Gotta fight fire with fire!", "No, we must remain diplomatic."],
+    },
+    {
+        question: "Continuation of Timber Sycamore.",
+        options: ["Continue Support", "End Program"],
+    },
+    {
+        question: "I heard it's time to renew the Aid for Rebel Warehouse Seizures.",
+        options: ["It's valuable resources that we should help defend.", "Suspend Aid, it's not that important."],
+    },
+    {
+        question: "It seems the situation in Syria has stabilized enough for a change in power! Help HTS win the War!",
+        options: ["Continue", "Continue"],
+    },
+    {
+        question: "Should we add some safe zones for civilians?",
+        options: ["Definatly", "Just let them be refugees"],
+    },
+    {
+        question: "I heard there's a directive to improve Communications and Intelligence networks for resistance forces.",
+        options: ["Communication is quite important (Approve).", "We've given them enough (Deny)."],
+    },
+    {
+        question: "Well, the war is continuing. Should we have a larger anti-Assad commitment?",
+        options: ["Yes, we should finish what we started.", "No, ISIS is a more important priority as it's a terrorist organization."],
+    },
+    {
+        question: "A fresh wepon is hot off the press, should we introduce TOW Missiles?",
+        options: ["Dangerous indeed, like a disease once unleashed cannot be taken back", "BGM-71 TOW, an anti-tank tube missile, Useful… for victory."],
     },
 ];
 let currentQuestion = 0;
@@ -146,7 +178,11 @@ function render() {
 
     ctx.fillStyle = '#000000';
     ctx.textBaseline = 'middle';
-    ctx.fillText("FSA power meter", 170, 79);
+    if (currentQuestion < 8) {
+        ctx.fillText("FSA power meter", 170, 79);
+    } else {
+        ctx.fillText("HTS power meter", 170, 79);
+    }
     ctx.fillText("ISIS power meter", 170, 104);
     ctx.fillText(" Bashar al-Assad power meter", 90, 129);
 
@@ -218,8 +254,8 @@ function oldManConsequences(optionChosen) {
         } else {
             ISISbar += 100;
         }
-    } else {
-        alert("This question doesn't have consequences coded in yet, but it will be added in the future! For now, just click the button to move on to the next question.");
+    // } else {
+    //     alert("This question doesn't have consequences coded in yet, but it will be added in the future! For now, just click the button to move on to the next question.");
     }        
 }
 
