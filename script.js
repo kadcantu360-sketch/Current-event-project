@@ -245,7 +245,7 @@ function oldManConsequences(optionChosen) {
 
     AssarBar += (barMax - AssarStart) / 12;
     ISISbar += (barMax - ISISstart) / 12;
-    budget-= 1000000;
+    budget-= 500000;
 
     if (currentQuestion+1 === 1) {
         if (optionChosen === 1) {
