@@ -115,6 +115,8 @@ let AssarBar = AssarStart;
 
 let barMax = 275;
 
+let chill=0;
+
 
 
 
@@ -135,22 +137,10 @@ function update() {
     checkIfGameOver();
 
 
-    // document.getElementById('body').style.backgroundImage = "broke.png";
-
-    if (reasonForGameOver !== 5 && window.location.pathname === "/mainPage.html") {
-        while (document.body.firstChild) {
-            document.body.removeChild(document.body.firstChild);
-        }
+    if (reasonForGameOver !== 5 && !window.location.href.includes("gameOver.html") && chill == 0) {
         window.location.href = `gameOver.html?reasonForGameOver=${reasonForGameOver}`;
+        chill = 1;
     }
-    
-    // if (window.location.href !== "mainPage.html") {
-    //     if (reasonForGameOver == 0) {
-    //         // console.log(reasonForGameOver);
-    //         document.getElementById('body').style.backgroundImage = "broke.png";
-    //         // console.log("Game Over");
-    //     }   
-    // }    
 
 }
 
@@ -160,7 +150,7 @@ function update() {
 
 function render() {
 
-    if (reasonForGameOver === 5) {
+    // if (reasonForGameOver === 5) {
 
         ctx.font = '14px Arial';
         ctx.fillStyle = '#000000';
@@ -209,7 +199,7 @@ function render() {
         ctx.fillText("ISIS power meter", 170, 104);
         ctx.fillText(" Bashar al-Assad power meter", 90, 129);
 
-    }
+    // }
 }
 
 
@@ -405,11 +395,16 @@ button2.addEventListener('click', () => {
     chooseNewQuestion(2);
 });
 
-document.addEventListener('keydown', (event) => {
-    if (event.key === '=') {
-        budget *= 10;
-    }
-    if (event.key === '-') {
-        budget /= 10;
-    }
-});
+// document.addEventListener('keydown', (event) => {
+//     if (event.key === '=') {
+//         budget *= 10;
+//     }
+//     if (event.key === '-') {
+//         budget /= 10;
+//     }
+
+//     if (event.key === 'h') {
+//         window.location.href = `gameOver.html?reasonForGameOver=${reasonForGameOver}`;
+//     }
+
+// });
