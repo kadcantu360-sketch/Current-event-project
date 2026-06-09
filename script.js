@@ -134,13 +134,24 @@ function update() {
 
     checkIfGameOver();
 
-    if (reasonForGameOver !== 5) {
+
+    // document.getElementById('body').style.backgroundImage = "broke.png";
+
+    if (reasonForGameOver !== 5 && window.location.pathname === "/mainPage.html") {
         while (document.body.firstChild) {
             document.body.removeChild(document.body.firstChild);
         }
-        window.location.href = "gameOver.html";
+        window.location.href = `gameOver.html?reasonForGameOver=${reasonForGameOver}`;
     }
     
+    // if (window.location.href !== "mainPage.html") {
+    //     if (reasonForGameOver == 0) {
+    //         // console.log(reasonForGameOver);
+    //         document.getElementById('body').style.backgroundImage = "broke.png";
+    //         // console.log("Game Over");
+    //     }   
+    // }    
+
 }
 
 
@@ -149,53 +160,56 @@ function update() {
 
 function render() {
 
-    ctx.font = '14px Arial';
-    ctx.fillStyle = '#000000';
-    
-    ctx.fillText('budget: $' + budgetFirstDigits + ' ' + wordForMoneyScale, 5, 25);
-    ctx.fillText('how is your relation with Syria: ' + Math.floor(syrianRelationPrev), 5, 45);
+    if (reasonForGameOver === 5) {
+
+        ctx.font = '14px Arial';
+        ctx.fillStyle = '#000000';
+        
+        ctx.fillText('budget: $' + budgetFirstDigits + ' ' + wordForMoneyScale, 5, 25);
+        ctx.fillText('how is your relation with Syria: ' + Math.floor(syrianRelationPrev), 5, 45);
 
 
 
-    ctx.fillStyle = '#ffa0a0';
+        ctx.fillStyle = '#ffa0a0';
 
-    ctx.fillRect(10,67,FSAbar ,22);
-    ctx.strokeRect(10,67,275,22);
-    
+        ctx.fillRect(10,67,FSAbar ,22);
+        ctx.strokeRect(10,67,275,22);
+        
 
-    ctx.fillRect(10,92,ISISbar ,22);
-    ctx.strokeRect(10,92,275,22);
-
-
-    ctx.fillRect(10,117,AssarBar ,22);
-    ctx.strokeRect(10,117,275,22);
+        ctx.fillRect(10,92,ISISbar ,22);
+        ctx.strokeRect(10,92,275,22);
 
 
-
-    ctx.fillStyle = '#ff0000';
-
-    ctx.fillRect(10,67,FSAbarPrev, 22);
-    ctx.strokeRect(10,67,275,22);
-    
-
-    ctx.fillRect(10,92,ISISbarPrev, 22);
-    ctx.strokeRect(10,92,275,22);
+        ctx.fillRect(10,117,AssarBar ,22);
+        ctx.strokeRect(10,117,275,22);
 
 
-    ctx.fillRect(10,117,AssarBarPrev, 22);
-    ctx.strokeRect(10,117,275,22);
+
+        ctx.fillStyle = '#ff0000';
+
+        ctx.fillRect(10,67,FSAbarPrev, 22);
+        ctx.strokeRect(10,67,275,22);
+        
+
+        ctx.fillRect(10,92,ISISbarPrev, 22);
+        ctx.strokeRect(10,92,275,22);
 
 
-    ctx.fillStyle = '#000000';
-    ctx.textBaseline = 'middle';
-    if (currentQuestion < 7) {
-        ctx.fillText("FSA power meter", 170, 79);
-    } else {
-        ctx.fillText("HTS power meter", 170, 79);
+        ctx.fillRect(10,117,AssarBarPrev, 22);
+        ctx.strokeRect(10,117,275,22);
+
+
+        ctx.fillStyle = '#000000';
+        ctx.textBaseline = 'middle';
+        if (currentQuestion < 7) {
+            ctx.fillText("FSA power meter", 170, 79);
+        } else {
+            ctx.fillText("HTS power meter", 170, 79);
+        }
+        ctx.fillText("ISIS power meter", 170, 104);
+        ctx.fillText(" Bashar al-Assad power meter", 90, 129);
+
     }
-    ctx.fillText("ISIS power meter", 170, 104);
-    ctx.fillText(" Bashar al-Assad power meter", 90, 129);
-
 }
 
 
@@ -367,7 +381,6 @@ function chooseNewQuestion(optionChosen) {
 
 function checkIfGameOver() {
     if (currentQuestion >= 19 || (FSAbar >= barMax && currentQuestion > 7)) {
-
         reasonForGameOver = 0;
     } else if (budgetPrev <= 0) {
         reasonForGameOver = 1;

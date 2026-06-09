@@ -7,8 +7,14 @@
         {
             "type": "chrome",
             "request": "launch",
-            "name": "Open index.html",
-            "file": "c:\\Users\\kadcantu360\\Desktop\\My code folder\\Current event project\\index.html"
+            "name": "Launch Chrome against localhost",
+            "url": "http://localhost:3000/index.html",
+            "webRoot": "${workspaceFolder}"
         }
+        //     "type": "chrome",
+        //     "request": "launch",
+        //     "name": "Open index.html",
+        //     "file": "c:\\Users\\kadcantu360\\Desktop\\My code folder\\Current event project\\index.html"
+        // }
     ]
 }
